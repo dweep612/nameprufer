@@ -4,13 +4,13 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 
+const usernamecheckRoute = require("./routes/usernamecheck");
+
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/api", (req, res) => {
-  res.send("Hello");
-});
+app.use("/api", usernamecheckRoute);
 
 // Server
 const port = process.env.PORT || 8000;
