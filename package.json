@@ -1,5 +1,5 @@
 {
-  "name": "usernamechecker",
+  "name": "nameprufer",
   "version": "1.0.0",
   "description": "An Opensource Website for Username Availability Checking across Popular Platforms.",
   "main": "app.js",
@@ -9,21 +9,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dweep612/usernamechecker.git"
+    "url": "git+https://github.com/dweep612/nameprufer.git"
   },
   "keywords": [
     "username",
     "checker",
     "usernamechecker",
     "usernameavailability",
-    "usernameavailable"
+    "usernameavailable",
+    "nameprufer"
   ],
   "author": "Opensource",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dweep612/usernamechecker/issues"
+    "url": "https://github.com/dweep612/nameprufer/issues"
   },
-  "homepage": "https://github.com/dweep612/usernamechecker#readme",
+  "homepage": "https://github.com/dweep612/nameprufer#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
