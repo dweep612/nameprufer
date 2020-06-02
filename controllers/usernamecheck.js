@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
  ****************************/
 
 exports.githubCheck = (req, res) => {
-  var githubRegex = /^[a-zA-Z0-9]\w{0,38}/g;
+  var githubRegex = /^[a-zA-Z0-9]*$\w{0,38}/g;
 
   if (
     githubRegex.test(req.params.username) &&
@@ -28,7 +28,7 @@ exports.githubCheck = (req, res) => {
 };
 
 exports.gitlabCheck = (req, res) => {
-  var gitlabRegex = /^[a-zA-Z0-9]\w{0,254}/g;
+  var gitlabRegex = /^[a-zA-Z0-9]*$\w{0,254}/g;
 
   if (
     gitlabRegex.test(req.params.username) &&
@@ -51,7 +51,7 @@ exports.gitlabCheck = (req, res) => {
 };
 
 exports.bitbucketCheck = (req, res) => {
-  var bitbucketRegex = /^[a-zA-Z0-9]\w{0,38}/g;
+  var bitbucketRegex = /^[a-zA-Z0-9]*$\w{0,38}/g;
 
   if (
     bitbucketRegex.test(req.params.username) &&
@@ -78,7 +78,7 @@ exports.bitbucketCheck = (req, res) => {
  ****************************/
 
 exports.facebookCheck = (req, res) => {
-  var facebookRegex = /^[a-zA-Z0-9.]\w{5,}/g;
+  var facebookRegex = /^[a-zA-Z0-9.]*$\w{5,}/g;
 
   if (facebookRegex.test(req.params.username)) {
     fetch("https://facebook.com/" + req.params.username)
@@ -118,7 +118,7 @@ exports.instagramCheck = (req, res) => {
 };
 
 exports.twitterCheck = (req, res) => {
-  var twitterRegex = /^[a-zA-Z0-9_]\w{0,14}/g;
+  var twitterRegex = /^[a-zA-Z0-9_]*$\w{0,14}/g;
 
   if (
     twitterRegex.test(req.params.username) &&

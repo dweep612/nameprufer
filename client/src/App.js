@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import { github, gitlab, facebook, instagram, twitter } from "./helper/apicall";
+import {
+  github,
+  gitlab,
+  bitbucket,
+  facebook,
+  instagram,
+  twitter,
+} from "./helper/apicall";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -8,34 +15,87 @@ function App() {
   const [usernameTaken, setUsernameTaken] = useState(false);
   const [usernameAvai, setUsernameAvai] = useState(false);
 
+  useEffect(() => {
+    if (invalidUsername) {
+      console.log("Invalid");
+    }
+    if (usernameTaken) {
+      console.log("Taken");
+    }
+    if (usernameAvai) {
+      console.log("Available");
+    }
+  }, [invalidUsername, usernameTaken, usernameAvai]);
+
   const handleChange = (event) => {
     setUsername(event.target.value);
   };
 
   const onSubmit = (event) => {
-    // event.preventDefault();
-    // setInvalidUsername(false);
-    // setUsernameTaken(false);
-    // setUsernameAvai(false);
-    // github(username).then((data) => {
-    //   console.log(data);
-    //   if (data.error == "Invalid Username") {
+    event.preventDefault();
+    setInvalidUsername(false);
+    setUsernameTaken(false);
+    setUsernameAvai(false);
+
+    github(username).then((data) => {
+      if (data.error === "Invalid Username") {
+        setInvalidUsername(true);
+      } else if (data.error === "Username Taken") {
+        setUsernameTaken(true);
+      } else {
+        setUsernameAvai(true);
+      }
+    });
+
+    // gitlab(username).then((data) => {
+    //   if (data.error === "Invalid Username") {
     //     setInvalidUsername(true);
-    //   } else if (data.error == "Username Taken") {
+    //   } else if (data.error === "Username Taken") {
     //     setUsernameTaken(true);
     //   } else {
     //     setUsernameAvai(true);
     //   }
     // });
-    // if (invalidUsername) {
-    //   console.log("Invalid");
-    // }
-    // if (usernameTaken) {
-    //   console.log("Taken");
-    // }
-    // if (usernameAvai) {
-    //   console.log("Available");
-    // }
+
+    // bitbucket(username).then((data) => {
+    //   if (data.error === "Invalid Username") {
+    //     setInvalidUsername(true);
+    //   } else if (data.error === "Username Taken") {
+    //     setUsernameTaken(true);
+    //   } else {
+    //     setUsernameAvai(true);
+    //   }
+    // });
+
+    // facebook(username).then((data) => {
+    //   if (data.error === "Invalid Username") {
+    //     setInvalidUsername(true);
+    //   } else if (data.error === "Username Taken") {
+    //     setUsernameTaken(true);
+    //   } else {
+    //     setUsernameAvai(true);
+    //   }
+    // });
+
+    // instagram(username).then((data) => {
+    //   if (data.error === "Invalid Username") {
+    //     setInvalidUsername(true);
+    //   } else if (data.error === "Username Taken") {
+    //     setUsernameTaken(true);
+    //   } else {
+    //     setUsernameAvai(true);
+    //   }
+    // });
+
+    // twitter(username).then((data) => {
+    //   if (data.error === "Invalid Username") {
+    //     setInvalidUsername(true);
+    //   } else if (data.error === "Username Taken") {
+    //     setUsernameTaken(true);
+    //   } else {
+    //     setUsernameAvai(true);
+    //   }
+    // });
   };
 
   return (
@@ -48,14 +108,14 @@ function App() {
         <input
           type="search"
           className="searchbar"
-          id=""
+          id="searchbar"
           spellCheck="false"
           onChange={handleChange}
           value={username}
           autoFocus
           required
         />
-        <button onClick={onSubmit} className="searchButton">
+        <button onClick={onSubmit} className="searchButton" id="check">
           Check
         </button>
       </div>
@@ -63,7 +123,6 @@ function App() {
         <p>
           Check Domain name & Username Availability across Popular Platforms.
         </p>
-        <p>{username}</p>
       </div>
       <div className="repoplatforms">
         <div className="col">
