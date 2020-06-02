@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1b262c;
+  font-size: 1em;
+  color: #bbe1fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/************************* 
+       TYPOGRAPHY
+**************************/
+.title p {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5em;
+  font-weight: 600;
+}
+
+/************************* 
+         LAYOUT
+**************************/
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search {
+  width: 80%;
+  margin-top: 3.5em;
+  margin: 3.5em auto 0 auto;
+  position: relative;
+  display: flex;
+}
+
+.searchbar {
+  width: 100%;
+  border: 3px solid #ecf0f1;
+  border-right: none;
+  padding: 5px;
+  height: 50px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #1b262c;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.searchButton {
+  width: 100px;
+  height: 50px;
+  border: 1px solid #bbe1fa;
+  background: #30475e;
+  text-align: center;
+  color: #bbe1fa;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: none;
+}
+
+.searchButton:hover {
+  box-shadow: 2.4px 2.4px #30475e;
+}
+
+.repoplatforms {
+  margin-top: 5.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.socialplatforms {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.col img {
+  margin: 0 5rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 6em;
+  margin-bottom: 3em;
+}
+
+footer .btn {
+  background-color: #000000;
+  border: 3px solid black;
+  color: #fff;
+  font-weight: bold;
+  font-family: monospace;
+  padding: 0.7em 3em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  outline: none;
+}
