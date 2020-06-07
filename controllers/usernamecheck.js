@@ -78,9 +78,12 @@ exports.bitbucketCheck = (req, res) => {
  ****************************/
 
 exports.facebookCheck = (req, res) => {
-  var facebookRegex = /^[a-zA-Z0-9.]*$\w{5,}/g;
+  var facebookRegex = /^[a-zA-Z0-9.]*$\w{0,}/g;
 
-  if (facebookRegex.test(req.params.username)) {
+  if (
+    facebookRegex.test(req.params.username) &&
+    req.params.username.length >= 5
+  ) {
     fetch("https://facebook.com/" + req.params.username)
       .then((response) => {
         if (response.status === 404) {

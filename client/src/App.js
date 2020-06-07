@@ -11,21 +11,11 @@ import {
 
 function App() {
   const [username, setUsername] = useState("");
-  const [invalidUsername, setInvalidUsername] = useState(false);
-  const [usernameTaken, setUsernameTaken] = useState(false);
-  const [usernameAvai, setUsernameAvai] = useState(false);
+  const [usernameStatus, setUsernameStatus] = useState([]);
 
   useEffect(() => {
-    if (invalidUsername) {
-      console.log("Invalid");
-    }
-    if (usernameTaken) {
-      console.log("Taken");
-    }
-    if (usernameAvai) {
-      console.log("Available");
-    }
-  }, [invalidUsername, usernameTaken, usernameAvai]);
+    console.log(usernameStatus);
+  }, [usernameStatus]);
 
   const handleChange = (event) => {
     setUsername(event.target.value);
@@ -33,69 +23,67 @@ function App() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setInvalidUsername(false);
-    setUsernameTaken(false);
-    setUsernameAvai(false);
+    setUsernameStatus([]);
 
     github(username).then((data) => {
       if (data.error === "Invalid Username") {
-        setInvalidUsername(true);
+        setUsernameStatus((prev) => [...prev, "GInvalid"]);
       } else if (data.error === "Username Taken") {
-        setUsernameTaken(true);
+        setUsernameStatus((prev) => [...prev, "GTaken"]);
       } else {
-        setUsernameAvai(true);
+        setUsernameStatus((prev) => [...prev, "GAvailable"]);
       }
     });
 
-    // gitlab(username).then((data) => {
-    //   if (data.error === "Invalid Username") {
-    //     setInvalidUsername(true);
-    //   } else if (data.error === "Username Taken") {
-    //     setUsernameTaken(true);
-    //   } else {
-    //     setUsernameAvai(true);
-    //   }
-    // });
+    gitlab(username).then((data) => {
+      if (data.error === "Invalid Username") {
+        setUsernameStatus((prev) => [...prev, "GLInvalid"]);
+      } else if (data.error === "Username Taken") {
+        setUsernameStatus((prev) => [...prev, "GLTaken"]);
+      } else {
+        setUsernameStatus((prev) => [...prev, "GLAvailable"]);
+      }
+    });
 
-    // bitbucket(username).then((data) => {
-    //   if (data.error === "Invalid Username") {
-    //     setInvalidUsername(true);
-    //   } else if (data.error === "Username Taken") {
-    //     setUsernameTaken(true);
-    //   } else {
-    //     setUsernameAvai(true);
-    //   }
-    // });
+    bitbucket(username).then((data) => {
+      if (data.error === "Invalid Username") {
+        setUsernameStatus((prev) => [...prev, "BInvalid"]);
+      } else if (data.error === "Username Taken") {
+        setUsernameStatus((prev) => [...prev, "BTaken"]);
+      } else {
+        setUsernameStatus((prev) => [...prev, "BAvailable"]);
+      }
+    });
 
-    // facebook(username).then((data) => {
-    //   if (data.error === "Invalid Username") {
-    //     setInvalidUsername(true);
-    //   } else if (data.error === "Username Taken") {
-    //     setUsernameTaken(true);
-    //   } else {
-    //     setUsernameAvai(true);
-    //   }
-    // });
+    facebook(username).then((data) => {
+      if (data.error === "Invalid Username") {
+        setUsernameStatus((prev) => [...prev, "FInvalid"]);
+      } else if (data.error === "Username Taken") {
+        setUsernameStatus((prev) => [...prev, "FTaken"]);
+      } else {
+        setUsernameStatus((prev) => [...prev, "FAvailable"]);
+      }
+    });
 
-    // instagram(username).then((data) => {
-    //   if (data.error === "Invalid Username") {
-    //     setInvalidUsername(true);
-    //   } else if (data.error === "Username Taken") {
-    //     setUsernameTaken(true);
-    //   } else {
-    //     setUsernameAvai(true);
-    //   }
-    // });
+    instagram(username).then((data) => {
+      if (data.error === "Invalid Username") {
+        setUsernameStatus((prev) => [...prev, "IInvalid"]);
+      } else if (data.error === "Username Taken") {
+        setUsernameStatus((prev) => [...prev, "ITaken"]);
+      } else {
+        setUsernameStatus((prev) => [...prev, "IAvailable"]);
+      }
+    });
 
-    // twitter(username).then((data) => {
-    //   if (data.error === "Invalid Username") {
-    //     setInvalidUsername(true);
-    //   } else if (data.error === "Username Taken") {
-    //     setUsernameTaken(true);
-    //   } else {
-    //     setUsernameAvai(true);
-    //   }
-    // });
+    twitter(username).then((data) => {
+      if (data.error === "Invalid Username") {
+        setUsernameStatus((prev) => [...prev, "TInvalid"]);
+      } else if (data.error === "Username Taken") {
+        setUsernameStatus((prev) => [...prev, "TTaken"]);
+      } else {
+        setUsernameStatus((prev) => [...prev, "TAvailable"]);
+      }
+    });
   };
 
   return (
