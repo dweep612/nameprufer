@@ -113,18 +113,14 @@ function App() {
           Check Domain name & Username Availability across Popular Platforms.
         </p>
       </div>
-      <div className="repoplatforms">
-        <div className="col">
-          <img src={require("./assets/github.svg")} alt="Github" />
-          <img src={require("./assets/gitlab.svg")} alt="Gitlab" />
-        </div>
+      <div className="repoplatforms col">
+          <img src={require("./assets/github.svg")} className="icon" alt="Github" />
+          <img src={require("./assets/gitlab.svg")} className="icon" alt="Gitlab" />
       </div>
-      <div className="socialplatforms">
-        <div className="col">
-          <img src={require("./assets/facebook.svg")} alt="Facebook" />
-          <img src={require("./assets/instagram.svg")} alt="Instagram" />
-          <img src={require("./assets/twitter.svg")} alt="Twitter" />
-        </div>
+      <div className="socialplatforms col">
+          <img src={require("./assets/facebook.svg")} className="icon available" alt="Facebook" />
+          <img src={require("./assets/instagram.svg")} className="icon" alt="Instagram" />
+          <img src={require("./assets/twitter.svg")} className="icon" alt="Twitter" />
       </div>
       <footer>
         <a href="http://github.com/dweep612/nameprufer" target="_blank">

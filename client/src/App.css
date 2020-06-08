@@ -51,6 +51,7 @@ input[type="search"]::-webkit-search-cancel-button {
   font-size: 1.4rem;
   font-weight: bold;
 }
+
 .searchbar::placeholder{
   color: rgba(48, 71, 94, 0.65);
   font-weight: 600;
@@ -76,20 +77,23 @@ input[type="search"]::-webkit-search-cancel-button {
   text-transform: uppercase;
 }
 
-.repoplatforms {
-  margin-top: 5.5rem;
-  display: flex;
-  justify-content: center;
-}
-
-.socialplatforms {
+.col{
   margin-top: 4rem;
   display: flex;
+  display: flex;
   justify-content: center;
 }
 
-.col img {
-  margin: 0 5rem;
+.col .icon{
+  background-color: #30475e;
+  padding: 12px;
+  border-radius: 12px;
+  margin: 0 20px;
+  height: 80px;
+}
+
+.icon.available{
+  fill: #0066ff;
 }
 
 footer {
