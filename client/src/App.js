@@ -97,6 +97,7 @@ function App() {
           type="search"
           className="searchbar"
           id="searchbar"
+          placeholder="Enter Username"
           spellCheck="false"
           onChange={handleChange}
           value={username}

@@ -36,38 +36,44 @@ input[type="search"]::-webkit-search-cancel-button {
   margin: 3.5em auto 0 auto;
   position: relative;
   display: flex;
+  max-width: 650px;
 }
 
 .searchbar {
   width: 100%;
   border: 3px solid #ecf0f1;
   border-right: none;
-  padding: 5px;
+  padding-left: 12px;
   height: 50px;
-  border-radius: 5px 0 0 5px;
+  border-radius: 6px;
   outline: none;
   color: #1b262c;
   font-size: 1.4rem;
   font-weight: bold;
-  text-align: center;
+}
+.searchbar::placeholder{
+  color: rgba(48, 71, 94, 0.65);
+  font-weight: 600;
+}
+
+:focus{
+  box-shadow: 0 0 0 2px #0066ff;
 }
 
 .searchButton {
-  width: 100px;
+  width: 120px;
   height: 50px;
-  border: 1px solid #bbe1fa;
+  border: none;
   background: #30475e;
   text-align: center;
   color: #bbe1fa;
-  border-radius: 0 5px 5px 0;
+  border-radius: 6px;
+  margin-left: 8px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
   outline: none;
-}
-
-.searchButton:hover {
-  box-shadow: 2.4px 2.4px #30475e;
+  text-transform: uppercase;
 }
 
 .repoplatforms {
