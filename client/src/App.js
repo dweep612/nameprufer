@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import $ from "jquery";
 import {
   github,
   gitlab,
@@ -9,13 +10,14 @@ import {
   twitter,
 } from "./helper/apicall";
 
-function App() {
+const App = () => {
   const [username, setUsername] = useState("");
-  const [usernameStatus, setUsernameStatus] = useState([]);
-
-  useEffect(() => {
-    console.log(usernameStatus);
-  }, [usernameStatus]);
+  const [githubStatus, setGithubStatus] = useState("");
+  const [gitlabStatus, setGitlabStatus] = useState("");
+  const [bitbucketStatus, setBitbucketStatus] = useState("");
+  const [facebookStatus, setFacebookStatus] = useState("");
+  const [instagramStatus, setInstagramStatus] = useState("");
+  const [twitterStatus, setTwitterStatus] = useState("");
 
   const handleChange = (event) => {
     setUsername(event.target.value);
@@ -23,67 +25,126 @@ function App() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setUsernameStatus([]);
 
     github(username).then((data) => {
       if (data.error === "Invalid Username") {
-        setUsernameStatus((prev) => [...prev, "GInvalid"]);
+        setGithubStatus("Invalid");
       } else if (data.error === "Username Taken") {
-        setUsernameStatus((prev) => [...prev, "GTaken"]);
+        setGithubStatus("Taken");
       } else {
-        setUsernameStatus((prev) => [...prev, "GAvailable"]);
+        setGithubStatus("Available");
       }
     });
 
     gitlab(username).then((data) => {
       if (data.error === "Invalid Username") {
-        setUsernameStatus((prev) => [...prev, "GLInvalid"]);
+        setGitlabStatus("Invalid");
       } else if (data.error === "Username Taken") {
-        setUsernameStatus((prev) => [...prev, "GLTaken"]);
+        setGitlabStatus("Taken");
       } else {
-        setUsernameStatus((prev) => [...prev, "GLAvailable"]);
+        setGitlabStatus("Available");
       }
     });
 
     bitbucket(username).then((data) => {
       if (data.error === "Invalid Username") {
-        setUsernameStatus((prev) => [...prev, "BInvalid"]);
+        setBitbucketStatus("Invalid");
       } else if (data.error === "Username Taken") {
-        setUsernameStatus((prev) => [...prev, "BTaken"]);
+        setBitbucketStatus("Taken");
       } else {
-        setUsernameStatus((prev) => [...prev, "BAvailable"]);
+        setBitbucketStatus("Available");
       }
     });
 
     facebook(username).then((data) => {
       if (data.error === "Invalid Username") {
-        setUsernameStatus((prev) => [...prev, "FInvalid"]);
+        setFacebookStatus("Invalid");
       } else if (data.error === "Username Taken") {
-        setUsernameStatus((prev) => [...prev, "FTaken"]);
+        setFacebookStatus("Taken");
       } else {
-        setUsernameStatus((prev) => [...prev, "FAvailable"]);
+        setFacebookStatus("Available");
       }
     });
 
     instagram(username).then((data) => {
       if (data.error === "Invalid Username") {
-        setUsernameStatus((prev) => [...prev, "IInvalid"]);
+        setInstagramStatus("Invalid");
       } else if (data.error === "Username Taken") {
-        setUsernameStatus((prev) => [...prev, "ITaken"]);
+        setInstagramStatus("Taken");
       } else {
-        setUsernameStatus((prev) => [...prev, "IAvailable"]);
+        setInstagramStatus("Available");
       }
     });
 
     twitter(username).then((data) => {
       if (data.error === "Invalid Username") {
-        setUsernameStatus((prev) => [...prev, "TInvalid"]);
+        setTwitterStatus("Invalid");
       } else if (data.error === "Username Taken") {
-        setUsernameStatus((prev) => [...prev, "TTaken"]);
+        setTwitterStatus("Taken");
       } else {
-        setUsernameStatus((prev) => [...prev, "TAvailable"]);
+        setTwitterStatus("Available");
       }
     });
+  };
+
+  const githubLogo = (githubStatus) => {
+    if (githubStatus === "Invalid") {
+      return true; // Change Logo
+    } else if (githubStatus === "Taken") {
+      return true;
+    } else {
+      return require("./assets/github.svg");
+    }
+  };
+
+  const gitlabLogo = (gitlabStatus) => {
+    if (gitlabStatus === "Invalid") {
+      return true; // Change Logo
+    } else if (gitlabStatus === "Taken") {
+      return true;
+    } else {
+      return require("./assets/gitlab.svg");
+    }
+  };
+
+  const bitbucketLogo = (bitbucketStatus) => {
+    if (bitbucketStatus === "Invalid") {
+      return true; // Change Logo
+    } else if (bitbucketStatus === "Taken") {
+      return true;
+    } else {
+      return true;
+    }
+  };
+
+  const facebookLogo = (facebookStatus) => {
+    if (facebookStatus === "Invalid") {
+      return true; // Change Logo
+    } else if (facebookStatus === "Taken") {
+      return true;
+    } else {
+      return require("./assets/facebook.svg");
+    }
+  };
+
+  const instagramLogo = (instagramStatus) => {
+    if (instagramStatus === "Invalid") {
+      return true; // Change Logo
+    } else if (instagramStatus === "Taken") {
+      return true;
+    } else {
+      return require("./assets/instagram.svg");
+    }
+  };
+
+  const twitterLogo = (twitterStatus) => {
+    if (twitterStatus === "Invalid") {
+      return true; // Change Logo
+    } else if (twitterStatus === "Taken") {
+      return true;
+    } else {
+      return require("./assets/twitter.svg");
+    }
   };
 
   return (
@@ -114,13 +175,22 @@ function App() {
         </p>
       </div>
       <div className="repoplatforms col">
-          <img src={require("./assets/github.svg")} className="icon" alt="Github" />
-          <img src={require("./assets/gitlab.svg")} className="icon" alt="Gitlab" />
+        <img src={githubLogo(githubStatus)} className="icon" alt="Github" />
+
+        <img src={gitlabLogo(gitlabStatus)} className="icon" alt="Gitlab" />
       </div>
       <div className="socialplatforms col">
-          <img src={require("./assets/facebook.svg")} className="icon available" alt="Facebook" />
-          <img src={require("./assets/instagram.svg")} className="icon" alt="Instagram" />
-          <img src={require("./assets/twitter.svg")} className="icon" alt="Twitter" />
+        <img
+          src={facebookLogo(facebookStatus)}
+          className="icon available"
+          alt="Facebook"
+        />
+        <img
+          src={instagramLogo(instagramStatus)}
+          className="icon"
+          alt="Instagram"
+        />
+        <img src={twitterLogo(twitterStatus)} className="icon" alt="Twitter" />
       </div>
       <footer>
         <a href="http://github.com/dweep612/nameprufer" target="_blank">
@@ -129,6 +199,6 @@ function App() {
       </footer>
     </div>
   );
-}
+};
 
 export default App;
