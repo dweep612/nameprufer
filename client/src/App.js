@@ -89,9 +89,9 @@ const App = () => {
 
   const githubLogo = (githubStatus) => {
     if (githubStatus === "Invalid") {
-      return true; // Change Logo
+      return require("./assets/githubinvalid.svg");
     } else if (githubStatus === "Taken") {
-      return true;
+      return require("./assets/githubtaken.svg");
     } else {
       return require("./assets/github.svg");
     }
@@ -99,9 +99,9 @@ const App = () => {
 
   const gitlabLogo = (gitlabStatus) => {
     if (gitlabStatus === "Invalid") {
-      return true; // Change Logo
+      return require("./assets/gitlabinvalid.svg");
     } else if (gitlabStatus === "Taken") {
-      return true;
+      return require("./assets/gitlabtaken.svg");
     } else {
       return require("./assets/gitlab.svg");
     }
@@ -119,9 +119,9 @@ const App = () => {
 
   const facebookLogo = (facebookStatus) => {
     if (facebookStatus === "Invalid") {
-      return true; // Change Logo
+      return require("./assets/facebookinvalid.svg");
     } else if (facebookStatus === "Taken") {
-      return true;
+      return require("./assets/facebooktaken.svg");
     } else {
       return require("./assets/facebook.svg");
     }
@@ -129,9 +129,9 @@ const App = () => {
 
   const instagramLogo = (instagramStatus) => {
     if (instagramStatus === "Invalid") {
-      return true; // Change Logo
+      return require("./assets/instagraminvalid.svg");
     } else if (instagramStatus === "Taken") {
-      return true;
+      return require("./assets/instagramtaken.svg");
     } else {
       return require("./assets/instagram.svg");
     }
@@ -139,9 +139,9 @@ const App = () => {
 
   const twitterLogo = (twitterStatus) => {
     if (twitterStatus === "Invalid") {
-      return true; // Change Logo
+      return require("./assets/twitterinvalid.svg");
     } else if (twitterStatus === "Taken") {
-      return true;
+      return require("./assets/twittertaken.svg");
     } else {
       return require("./assets/twitter.svg");
     }
