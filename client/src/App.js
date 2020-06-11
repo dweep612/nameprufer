@@ -19,6 +19,8 @@ const App = () => {
   const [instagramStatus, setInstagramStatus] = useState("");
   const [twitterStatus, setTwitterStatus] = useState("");
 
+  var invalidRegex = /^[%#]/g;
+
   const handleChange = (event) => {
     setUsername(event.target.value);
   };
@@ -26,65 +28,71 @@ const App = () => {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    github(username).then((data) => {
-      if (data.error === "Invalid Username") {
-        setGithubStatus("Invalid");
-      } else if (data.error === "Username Taken") {
-        setGithubStatus("Taken");
-      } else {
-        setGithubStatus("Available");
-      }
-    });
+    if (username === "") {
+      alert("Username cannot be left blank.");
+    } else if (invalidRegex.test(username)) {
+      alert("Username cannot start or end with % and #.");
+    } else {
+      github(username).then((data) => {
+        if (data.error === "Invalid Username") {
+          setGithubStatus("Invalid");
+        } else if (data.error === "Username Taken") {
+          setGithubStatus("Taken");
+        } else {
+          setGithubStatus("Available");
+        }
+      });
 
-    gitlab(username).then((data) => {
-      if (data.error === "Invalid Username") {
-        setGitlabStatus("Invalid");
-      } else if (data.error === "Username Taken") {
-        setGitlabStatus("Taken");
-      } else {
-        setGitlabStatus("Available");
-      }
-    });
+      gitlab(username).then((data) => {
+        if (data.error === "Invalid Username") {
+          setGitlabStatus("Invalid");
+        } else if (data.error === "Username Taken") {
+          setGitlabStatus("Taken");
+        } else {
+          setGitlabStatus("Available");
+        }
+      });
 
-    bitbucket(username).then((data) => {
-      if (data.error === "Invalid Username") {
-        setBitbucketStatus("Invalid");
-      } else if (data.error === "Username Taken") {
-        setBitbucketStatus("Taken");
-      } else {
-        setBitbucketStatus("Available");
-      }
-    });
+      bitbucket(username).then((data) => {
+        if (data.error === "Invalid Username") {
+          setBitbucketStatus("Invalid");
+        } else if (data.error === "Username Taken") {
+          setBitbucketStatus("Taken");
+        } else {
+          setBitbucketStatus("Available");
+        }
+      });
 
-    facebook(username).then((data) => {
-      if (data.error === "Invalid Username") {
-        setFacebookStatus("Invalid");
-      } else if (data.error === "Username Taken") {
-        setFacebookStatus("Taken");
-      } else {
-        setFacebookStatus("Available");
-      }
-    });
+      facebook(username).then((data) => {
+        if (data.error === "Invalid Username") {
+          setFacebookStatus("Invalid");
+        } else if (data.error === "Username Taken") {
+          setFacebookStatus("Taken");
+        } else {
+          setFacebookStatus("Available");
+        }
+      });
 
-    instagram(username).then((data) => {
-      if (data.error === "Invalid Username") {
-        setInstagramStatus("Invalid");
-      } else if (data.error === "Username Taken") {
-        setInstagramStatus("Taken");
-      } else {
-        setInstagramStatus("Available");
-      }
-    });
+      instagram(username).then((data) => {
+        if (data.error === "Invalid Username") {
+          setInstagramStatus("Invalid");
+        } else if (data.error === "Username Taken") {
+          setInstagramStatus("Taken");
+        } else {
+          setInstagramStatus("Available");
+        }
+      });
 
-    twitter(username).then((data) => {
-      if (data.error === "Invalid Username") {
-        setTwitterStatus("Invalid");
-      } else if (data.error === "Username Taken") {
-        setTwitterStatus("Taken");
-      } else {
-        setTwitterStatus("Available");
-      }
-    });
+      twitter(username).then((data) => {
+        if (data.error === "Invalid Username") {
+          setTwitterStatus("Invalid");
+        } else if (data.error === "Username Taken") {
+          setTwitterStatus("Taken");
+        } else {
+          setTwitterStatus("Available");
+        }
+      });
+    }
   };
 
   const githubLogo = (githubStatus) => {
@@ -92,6 +100,8 @@ const App = () => {
       return require("./assets/githubinvalid.svg");
     } else if (githubStatus === "Taken") {
       return require("./assets/githubtaken.svg");
+    } else if (githubStatus === "Available") {
+      return require("./assets/githubavailable.svg");
     } else {
       return require("./assets/github.svg");
     }
@@ -102,6 +112,8 @@ const App = () => {
       return require("./assets/gitlabinvalid.svg");
     } else if (gitlabStatus === "Taken") {
       return require("./assets/gitlabtaken.svg");
+    } else if (gitlabStatus === "Available") {
+      return require("./assets/gitlabavailable.svg");
     } else {
       return require("./assets/gitlab.svg");
     }
@@ -122,6 +134,8 @@ const App = () => {
       return require("./assets/facebookinvalid.svg");
     } else if (facebookStatus === "Taken") {
       return require("./assets/facebooktaken.svg");
+    } else if (facebookStatus === "Available") {
+      return require("./assets/facebookavailable.svg");
     } else {
       return require("./assets/facebook.svg");
     }
@@ -132,6 +146,8 @@ const App = () => {
       return require("./assets/instagraminvalid.svg");
     } else if (instagramStatus === "Taken") {
       return require("./assets/instagramtaken.svg");
+    } else if (instagramStatus === "Available") {
+      return require("./assets/instagramavailable.svg");
     } else {
       return require("./assets/instagram.svg");
     }
@@ -142,6 +158,8 @@ const App = () => {
       return require("./assets/twitterinvalid.svg");
     } else if (twitterStatus === "Taken") {
       return require("./assets/twittertaken.svg");
+    } else if (twitterStatus === "Available") {
+      return require("./assets/twitteravailable.svg");
     } else {
       return require("./assets/twitter.svg");
     }
@@ -192,6 +210,26 @@ const App = () => {
         />
         <img src={twitterLogo(twitterStatus)} className="icon" alt="Twitter" />
       </div>
+      <p className="colordesc">
+        <span
+          style={{ color: "#bbe1fa", fontWeight: "bold", fontSize: "1.4rem" }}
+        >
+          Cyan
+        </span>{" "}
+        are available.{" "}
+        <span
+          style={{ color: "#657576", fontWeight: "bold", fontSize: "1.4rem" }}
+        >
+          Silver
+        </span>{" "}
+        are taken.{" "}
+        <span
+          style={{ color: "#009b90", fontWeight: "bold", fontSize: "1.4rem" }}
+        >
+          Green
+        </span>{" "}
+        are invalid.
+      </p>
       <footer>
         <a href="http://github.com/dweep612/nameprufer" target="_blank">
           <button className="btn">OPEN SOURCED ON GITHUB</button>
