@@ -1,39 +1,35 @@
 {
-  "name": "nameprufer",
-  "version": "1.0.0",
-  "description": "An Opensource Website for Username Availability Checking across Popular Platforms.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dweep612/nameprufer.git"
-  },
-  "keywords": [
-    "username",
-    "checker",
-    "usernamechecker",
-    "usernameavailability",
-    "usernameavailable",
-    "nameprufer"
-  ],
-  "author": "Opensource",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dweep612/nameprufer/issues"
-  },
-  "homepage": "https://github.com/dweep612/nameprufer#readme",
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.0"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "jquery": "^3.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.4",
-    "prettier": "^2.0.5"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
